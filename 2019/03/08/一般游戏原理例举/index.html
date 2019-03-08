@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="“游戏化” 的目标可能是人们真正自驱动去做的，我丝毫不敢说自己了解游戏化，尤其实操过程中太多不确定性，也只能一边学习，一边探究一下，尝试着做一个系列吧。  前言现在有很多产品都想着怎么做成游戏化，无论是内嵌h5小游戏，或者一些营销活动，或者把整个产品体验做成游戏体验，仿佛这样就可以把握用户增长和留存的引擎。 然而并不是用着个游戏UI，或者移植一套游戏玩法，就可以称之完成了游戏化设计，“like">
+<meta name="keywords" content="游戏化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一般游戏原理例举">
+<meta property="og:url" content="http://yoursite.com/2019/03/08/一般游戏原理例举/index.html">
+<meta property="og:site_name" content="此刻 | Moment">
+<meta property="og:description" content="“游戏化” 的目标可能是人们真正自驱动去做的，我丝毫不敢说自己了解游戏化，尤其实操过程中太多不确定性，也只能一边学习，一边探究一下，尝试着做一个系列吧。  前言现在有很多产品都想着怎么做成游戏化，无论是内嵌h5小游戏，或者一些营销活动，或者把整个产品体验做成游戏体验，仿佛这样就可以把握用户增长和留存的引擎。 然而并不是用着个游戏UI，或者移植一套游戏玩法，就可以称之完成了游戏化设计，“like">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-08T14:13:36.835Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一般游戏原理例举">
+<meta name="twitter:description" content="“游戏化” 的目标可能是人们真正自驱动去做的，我丝毫不敢说自己了解游戏化，尤其实操过程中太多不确定性，也只能一边学习，一边探究一下，尝试着做一个系列吧。  前言现在有很多产品都想着怎么做成游戏化，无论是内嵌h5小游戏，或者一些营销活动，或者把整个产品体验做成游戏体验，仿佛这样就可以把握用户增长和留存的引擎。 然而并不是用着个游戏UI，或者移植一套游戏玩法，就可以称之完成了游戏化设计，“like">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="此刻 | Moment" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/08/一般游戏原理例举/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>一般游戏原理例举 | 此刻 | Moment</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">此刻 | Moment</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/一般游戏原理例举/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moose">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="此刻 | Moment">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一般游戏原理例举
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-08 18:58:44 / 修改时间：22:13:36" itemprop="dateCreated datePublished" datetime="2019-03-08T18:58:44+08:00">2019-03-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/方法/" itemprop="url" rel="index"><span itemprop="name">方法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>“游戏化” 的目标可能是人们真正自驱动去做的，我丝毫不敢说自己了解游戏化，尤其实操过程中太多不确定性，也只能一边学习，一边探究一下，尝试着做一个系列吧。</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>现在有很多产品都想着怎么做成游戏化，无论是内嵌h5小游戏，或者一些营销活动，或者把整个产品体验做成游戏体验，仿佛这样就可以把握用户增长和留存的引擎。</p>
+<p>然而并不是用着个游戏UI，或者移植一套游戏玩法，就可以称之完成了游戏化设计，“like a game”和“gamification”还是有很大区别的。</p>
+<p>当然，“游戏化”至今也没有一个严格的定义，从一个宽泛的角度来讲，只有运用了游戏的框架来设计，就可以说是游戏化，但是游戏有好坏之分，而且并不是所有的领域都适合将其游戏化。</p>
+<a id="more"></a>
+<p>说实话，我并不觉得自己很了解游戏化，尤其实操阶段困难重重，这一篇的主题主要是对游戏原理的一些说明和举例，所以这里只是简单引入一下。</p>
+<h3 id="什么是游戏化"><a href="#什么是游戏化" class="headerlink" title="什么是游戏化"></a>什么是游戏化</h3><p>说白了，游戏化就是在非游戏的场景里运用游戏的设计方法，或者更具体一点，可以说是在非游戏场景里，利用游戏机制和设计体验，通过某种反馈或技巧，来吸引和激励人们实现他们的目标。</p>
+<p>所以游戏化可以说是一种思维，无论是用户使用的产品，还是企业内部管理，都可以运用这一套思维模式。</p>
+<p>就比如经常运用在产品上的PBL系统（分数、成就、等级），就是游戏设计中较核心的设计方法。</p>
+<p>游戏化也不能简单地概括为上瘾机制，上瘾更强调的是通过机制和手段，是一个好的游戏体验中附带的效果，而不是游戏的目的，当然上瘾机制更多地运用在某些C端产品上，但是在另外一些领域，或者说一些伟大的游戏化设计，更强调的是游戏作为一种介质所带来的整体体验。</p>
+<p>这篇的重点不在于游戏化的说明，所以就不展开了，之后有机会再详细聊。</p>
+<h3 id="游戏化的某些特征"><a href="#游戏化的某些特征" class="headerlink" title="游戏化的某些特征"></a>游戏化的某些特征</h3><p>那本著名的《游戏改变世界》里说，游戏的四大决定性特征是<strong>目标、规则、反馈系统、自愿参与</strong>，其他的设计机制/界面交互等，都可以归到这四类特征中。</p>
+<p>另外有人归纳过游戏化的特征为<strong>沉浸性体验、明确的反馈、可分享可提高的技巧、乐趣</strong>，这个更多的是从表现层面归纳游戏化特征。</p>
+<p>但无一例外，拥有出色的特征特质的游戏便会创造一种独特的体验：心流，即创造性成就和能力的提高带来的满足感和愉悦感。产生心流的最直接的要素为自我选择的目标、个人最优的学习曲线、以及持续不断的反馈，学习曲线和反馈保证了玩家的沉浸感，目标保证了持续地产生沉浸感，这里就不详细展开了，有时间开坑深入聊一下。</p>
+<p>当然，设计一款游戏离不开各种技巧，如PBL系统数值设计、世界观设计、核心玩法机制等等。每一项设计原理也离不开经济学/心理学/传播学等底层知识框架的支撑，我也只能尝试着在以后可以聊一聊。</p>
+<p>下面就进入本篇的正题，主要来源是《游戏设计的100个原理》，摘录了一些比较有启发性的原理，再加入自己的理解，尤其说明了一些使用上的前提条件。</p>
+<h3 id="游戏设计原理例举"><a href="#游戏设计原理例举" class="headerlink" title="游戏设计原理例举"></a>游戏设计原理例举</h3><h4 id="斯金纳箱"><a href="#斯金纳箱" class="headerlink" title="斯金纳箱"></a>斯金纳箱</h4><p>这是一个实验，把老鼠关在笼子里，针对不同的行为给予不同的奖励</p>
+<ul>
+<li>老鼠每次按下杠杆，就给它食物奖励</li>
+<li>老鼠每X次按下杠杆，就给它食物奖励</li>
+<li>老鼠每隔X分钟后第一次按下杠杆，就给它食物奖励</li>
+<li>老鼠每第X次（X是随机的）按下杠杆，就给它食物奖励</li>
+<li>老鼠每隔X分钟（X是随机的）后第一次按下杠杆，就给它食物奖励</li>
+</ul>
+<p>结果表明，有些条件会导致老鼠狂热地按下杠杆，有些则较温和，如果让老鼠尽可能地多按杆，最好的奖励周期是以变化的比率进行，多按就可以多得，但又不清楚到底要按多少次才能获得奖励。</p>
+<p>但要注意的是，更多的去按下杠杆并不一定意味着游戏是充满乐趣的。</p>
+<p>游戏里面的开宝箱，或者抽奖活动一般是使用此设计原理，当然要注意玩家付出成本和获得奖励的比值设定。另外一个出色的例子是抖音的推荐，永远让你觉得下一个是如此地充满期待。</p>
+<h4 id="反馈循环"><a href="#反馈循环" class="headerlink" title="反馈循环"></a>反馈循环</h4><p>分为“正反馈循环”和“负反馈循环”，正反馈循环是指头部玩家更容易获得资源，从而更容易获胜，富人越来越富的情况，比如象棋中吃掉对方棋会更容易吃掉下一个；负反馈循环是达成一个目标会让下一个目标更难达成，比如某些赛车游戏中，跑在第一会更容易被迎面的车撞。</p>
+<p>两者都会导致游戏失去平衡，比如在某些社区中，头部用户会获得更多的流量资源，从而使得流量更集中。</p>
+<p>可以考虑将正循环和负循环结合起来，或者找到一个对玩家的实力不会造成真正影响的奖励方式。</p>
+<h4 id="梯度效应"><a href="#梯度效应" class="headerlink" title="梯度效应"></a>梯度效应</h4><p>当人们越接近自己的目标时，会越有动力去完成它。</p>
+<p>比如相比于购买10杯咖啡得一杯免费，用户会更选择购买12杯得一杯免费，但是前两杯是免费的。所以某些收集卡片兑奖的活动，会在一开始就送你几张卡，目的之一就是利用梯度效应，拼多多的砍价活动，一开始砍价力度很大，会给人完成目标的激励。</p>
+<p>但是需要注意的是，相同的进度在不同阶段的效果是不同的，两张免费咖啡在一开始就赠送会比在中间赠送的效果要好，具体可以了解一下行为经济学中的前景理论。</p>
+<h4 id="希克定律"><a href="#希克定律" class="headerlink" title="希克定律"></a>希克定律</h4><p>讲的是用户在面对一系列相似的选项时，每往列表上增加一个选项，他做选择的时间将成对数形式增长，如果是无序选项，则是一个线性函数，其数学表达式是：T=  a + b（n），其中T是反应时间，n是可供选择的数量。希克定律说明了设计中简洁的重要性，怎样组织信息能够加快用户的学习和使用速度。</p>
+<p>所以更明确和有序的选择，会降低用户的进入门槛，一个合理的选项数量是3—6个（必要情况下）。</p>
+<p>当然值得注意的是，目的要搞清楚，并非要追求极致简洁，而是尽可能减少用户的尝试成本和决策时间，如果用户明确地知道自己想要什么，当然可供选择的选项越多越好。</p>
+<h4 id="核心游戏循环"><a href="#核心游戏循环" class="headerlink" title="核心游戏循环"></a>核心游戏循环</h4><p>重复是游戏的基本特征，上瘾的途径之一就是重复，所以核心游戏循环是游戏设计的核心，应该被几个动词简单清晰的描述，如《超级玛丽》的核心循环就是“跳跃”，在跳跃中插入一些其他动作辅助完成目标，但核心依然是跳跃；《王者荣耀》的核心循环就是“快感瞬间”，包括移动、放招、近距离战斗、杀人或离开，直至下一场战斗。</p>
+<p>所以“循环”是关键，包含着玩家的行动，该行动的结果，玩家对结果的反应，以及游戏要求玩家重复该行动以获得进度。</p>
+<p> 像抖音的上滑，以及视频时长控制在15s内，就是一个典型的核心循环，探探的左滑右滑，支付宝种树的点击收集能量，都是如此。</p>
+<p>一个好的核心游戏循环应该有以下特点：</p>
+<ul>
+<li>易于理解</li>
+<li>易于操作</li>
+<li>令人享受</li>
+<li>能够提供直接反馈</li>
+<li>能够适应不同场景的的灵活性</li>
+<li>具有扩展性，能够加入额外的动作</li>
+<li>能够与其他动作结合</li>
+<li>能够进化以支持其他的游戏循环</li>
+</ul>
+<h4 id="风险评估（大杀器心理）"><a href="#风险评估（大杀器心理）" class="headerlink" title="风险评估（大杀器心理）"></a>风险评估（大杀器心理）</h4><p>好的游戏可以让玩家频繁地进入风险评估状态，无论玩家是否有意识，风险决策让玩家做出选择，进入得益最大化或风险最小化的练习，且最好进入一种长期决策中。</p>
+<p>注意这里的选择是游戏进程中路径的选择，而不是某一个游戏属性的选择，玩家进入这种风险评估，就会更沉浸到游戏进程中。</p>
+<p>比如提供给你一个能够炸死全屏人的大杀器，你可以马上就用，也可以等到关键时刻用，这种风险评估就会利用玩家的利益最大化心理，提升游戏的悬念，且让玩家更沉浸。</p>
+<p>一个比较好的例子是支付宝过年集五福的活动，会提供一张万能卡，随意转换类型，你不自觉就会进入这种风险评估进程中。</p>
+<p>当然要注意供需平衡，大杀器并不易得，且价值要匹配。另外要注意在过程中不同玩家的决策方向，有的玩家倾向于规避风险，有的倾向于冒险获得收益。</p>
+<h4 id="四种玩家和四种趣味"><a href="#四种玩家和四种趣味" class="headerlink" title="四种玩家和四种趣味*"></a>四种玩家和四种趣味*</h4><p>玩家一般分为四种基本类别</p>
+<ul>
+<li>成就型玩家，主要关注在游戏中如何取胜，或完成特定的目标</li>
+<li>探险型玩家，会在游戏中寻找一切能探索的东西，收集爱好者也是其中一类</li>
+<li>社交型玩家，享受在游戏中和其他玩家互动，喜欢用公会和团队机制</li>
+<li>杀手型玩家，喜欢把自己的意愿强加给别人，无论是杀人或者骚扰激怒别人</li>
+</ul>
+<p>任何一种游戏都会有这四种玩家，只不过有所侧重，所以我们要拥抱这些玩家，在核心循环之外也可以设计更有趣的彩蛋或流程来鼓励不同的玩家，如给某些不影响结果的行为给予徽章，或者收集了所有的卡片之后触发某个彩蛋。</p>
+<p>然而还有一种玩家是漏洞利用者，破坏性是巨大的，无论是对游戏还是对其他玩家，我们除了尽量避免规则漏洞，也要做好被利用后的计划。</p>
+<p>另外在玩游戏时有四种趣味元素，激发玩家的热情：</p>
+<ul>
+<li>简单趣味，就是游戏的核心循环，玩家被带入这种体验并觉得有趣，而且是事情本身就非常有趣，而不需要通过得分来保持兴趣，如投篮或捏泡沫塑料的泡泡</li>
+<li>困难趣味，通过设计障碍带给玩家挑战，获得玩家的专注力，注意要平衡困难度和玩家的技巧</li>
+<li>他人趣味，通过竞争/合作或沟通，增加参与度</li>
+<li>严肃趣味，玩家想通过游戏改变自己和世界，由此获取趣味，如支付宝种树的公益活动，打球是想获得健康，通过答题活动是想获得知识的扩充等等，游戏对于玩家是一种价值观的表达，而不是浪费时间</li>
+</ul>
+<h4 id="博弈论的启发"><a href="#博弈论的启发" class="headerlink" title="博弈论的启发"></a>博弈论的启发</h4><p>玩家在游戏过程中，尤其是和其他玩家有互动时，为了达成玩家自己的目标，设计者需要考虑游戏机制中的博弈关系，从而避免糟糕的体验。</p>
+<p>比如在零和博弈中，每个博弈者会选择能最大化得到回报的策略，有的玩家目标是让对手获得最小回报，那么他们的选择永远是纳什均衡。感兴趣的可以去了解一下博弈论，这里就不展开了。</p>
+<h4 id="消费者剩余"><a href="#消费者剩余" class="headerlink" title="消费者剩余"></a>消费者剩余</h4><p>这是经济学中的一个理论，一次性付费比不上梯度型付费获得的利润更多，一个商品卖100元，那些只能付90元的用户就获取不到了，针对不同消费能力的用户推出不同的价格，会使利润最大化，优惠券可以算作此类价格歧视，游戏的商业模式也如此。</p>
+<p>游戏的玩法机制上，也可以参考这条理论，有门槛很低的玩法，也有需要持续投入的玩法，不同能力的玩家都可以付出来获取相应的利益。</p>
+<p>比如商品砍价玩法上，玩家可以付出不同的成本获得不同的折扣；设置不同的任务都可以完成最后的目标，而不需要必须经过某个过程。</p>
+<p>更何况对于有玩家协同效应的游戏来说，玩家本身已经可以算作游戏的收益了。</p>
+<h4 id="平衡和调试"><a href="#平衡和调试" class="headerlink" title="平衡和调试"></a>平衡和调试</h4><p>游戏需要平衡，让玩家在通过可能的选择和可用资源，取得符合良好学习曲线的成功。这是一个从宏观角度上的“感觉”，游戏的平衡很好；也是从微观层面上，玩家实际操作到的元素，如产出率、结果表或资源的数量，达到一个合适的状态。</p>
+<p>所以平衡需要调试，有一些复用性很强的游戏，会直接设置调试后台，调试的范围通过修改单独的变量，或者去掉整个功能，使游戏维持在合适的状态。</p>
+<p>调试也可以看作是改变供需关系，在规模经济下，避免整个系统的崩溃，需要牵制任何形式的占优策略。</p>
+<h4 id="兴趣曲线和学习曲线"><a href="#兴趣曲线和学习曲线" class="headerlink" title="兴趣曲线和学习曲线"></a>兴趣曲线和学习曲线</h4><p>可以说游戏都是围绕着兴趣曲线和学习曲线设计的，因为游戏就是一个不断学习，得到反馈，持续沉浸于其中的过程。</p>
+<p><strong>兴趣曲线</strong>是一个横坐标为体验时间，纵坐标为兴趣程度，观察兴趣曲线是为了了解在特定的上下文环境或连续的整体体验中，某些特定的刺激与其他相比是不是更有效，以此来指导调试。</p>
+<p>需要注意的是，兴趣曲线是基于观察的，并不需要精确度，而且一个好的兴趣曲线是将兴趣点合理排布，一开始的小高潮确保吸引住玩家，中间一个一个地铺垫，避免在某一个兴趣点上将时间拉得过长，最后一个高潮，使玩家意犹未尽。一个体验应该是自然的并且要有低潮，高度集中注意力之后需要一个相对平缓的时间段，来重新期待开始。</p>
+<p>完成一个任务需要付出时间和努力去理解它，且在重复过程中技能得到提高，<strong>学习曲线</strong>就是这个过程的可视化。</p>
+<p>因为很多游戏需要重复任务，如视频游戏等，所以学习曲线又可分为<strong>整体学习曲线</strong>和<strong>单任务学习曲线</strong>，单个任务可能会过于平滑或陡峭，但是在调整单个任务时依然保持整体学习曲线的平衡也是一个难题，比如过多的单调重复任务会使后期很无聊。</p>
+<p>所以很多信息流产品在过多刷新之后会引导关注不同的主题或进入不同的玩法路径。</p>
+<p>但是在加入新元素时，要注意不要用其他内容去转移玩家的注意力，这个新任务是玩家的唯一焦点；让玩家在实战中学习，而不要只是阅读和观察；允许玩家在没有惩罚或妨碍的情况下练习；给予积极的目标和反馈。</p>
+<p>音遇这款唱歌社交app在学习曲线的设计上比较合理，首先通过核心任务的引导，让玩家一步步自己去摸索，然后提供了不同的玩法，但都是核心循环加上新鲜元素，维持了很好的学习曲线。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>以上我也只能简单记录一下，有太多的原理只言片语根本说不清，而且在实际设计中依然会有更多的技巧与障碍。</p>
+<p>这里也只是开一个坑，后面可能会继续学习或分析关于游戏化的一些想法。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/游戏化/" rel="tag"># 游戏化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/08/2018大回顾/" rel="next" title="2018大回顾">
+                <i class="fa fa-chevron-left"></i> 2018大回顾
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/08/关于“学习”这项技术/" rel="prev" title="关于“学习”这项技术">
+                关于“学习”这项技术 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="moose">
+            
+              <p class="site-author-name" itemprop="name">moose</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是游戏化"><span class="nav-number">2.</span> <span class="nav-text">什么是游戏化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游戏化的某些特征"><span class="nav-number">3.</span> <span class="nav-text">游戏化的某些特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游戏设计原理例举"><span class="nav-number">4.</span> <span class="nav-text">游戏设计原理例举</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#斯金纳箱"><span class="nav-number">4.1.</span> <span class="nav-text">斯金纳箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反馈循环"><span class="nav-number">4.2.</span> <span class="nav-text">反馈循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度效应"><span class="nav-number">4.3.</span> <span class="nav-text">梯度效应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#希克定律"><span class="nav-number">4.4.</span> <span class="nav-text">希克定律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心游戏循环"><span class="nav-number">4.5.</span> <span class="nav-text">核心游戏循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#风险评估（大杀器心理）"><span class="nav-number">4.6.</span> <span class="nav-text">风险评估（大杀器心理）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四种玩家和四种趣味"><span class="nav-number">4.7.</span> <span class="nav-text">四种玩家和四种趣味*</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#博弈论的启发"><span class="nav-number">4.8.</span> <span class="nav-text">博弈论的启发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消费者剩余"><span class="nav-number">4.9.</span> <span class="nav-text">消费者剩余</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平衡和调试"><span class="nav-number">4.10.</span> <span class="nav-text">平衡和调试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兴趣曲线和学习曲线"><span class="nav-number">4.11.</span> <span class="nav-text">兴趣曲线和学习曲线</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moose</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
