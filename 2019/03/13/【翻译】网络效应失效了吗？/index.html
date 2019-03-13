@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这是D’Arcy  和 Li Jin  的一篇关于网络效应的文章，他们关于网络效应的一系列文章都很不错，这里尝试把最新的一篇翻译了一下，这篇文章在18年12月13日发布在  a16z 博客上，阐释了为什么网络效应貌似在失效。更希望可以看一下他们的原文，并且博客中也发布了很多关于网络效应的文章,文末附有原文链接。">
+<meta name="keywords" content="网络效应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【翻译】网络效应失效了吗？">
+<meta property="og:url" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/index.html">
+<meta property="og:site_name" content="此刻 | Moment">
+<meta property="og:description" content="这是D’Arcy  和 Li Jin  的一篇关于网络效应的文章，他们关于网络效应的一系列文章都很不错，这里尝试把最新的一篇翻译了一下，这篇文章在18年12月13日发布在  a16z 博客上，阐释了为什么网络效应貌似在失效。更希望可以看一下他们的原文，并且博客中也发布了很多关于网络效应的文章,文末附有原文链接。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/1270994144-1552475007346.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/954861347-1552475023674.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/247035710-1552475046385.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/220362137.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/1546585948-1552475080775.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/615204658-1552475090260.jpg">
+<meta property="og:updated_time" content="2019-03-13T11:07:42.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【翻译】网络效应失效了吗？">
+<meta name="twitter:description" content="这是D’Arcy  和 Li Jin  的一篇关于网络效应的文章，他们关于网络效应的一系列文章都很不错，这里尝试把最新的一篇翻译了一下，这篇文章在18年12月13日发布在  a16z 博客上，阐释了为什么网络效应貌似在失效。更希望可以看一下他们的原文，并且博客中也发布了很多关于网络效应的文章,文末附有原文链接。">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/1270994144-1552475007346.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="此刻 | Moment" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>【翻译】网络效应失效了吗？ | 此刻 | Moment</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">此刻 | Moment</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/【翻译】网络效应失效了吗？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moose">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="此刻 | Moment">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【翻译】网络效应失效了吗？
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-13 18:58:58 / 修改时间：19:07:42" itemprop="dateCreated datePublished" datetime="2019-03-13T18:58:58+08:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/产品/" itemprop="url" rel="index"><span itemprop="name">产品</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.4k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这是D’Arcy  和 Li Jin  的一篇关于网络效应的文章，他们关于网络效应的一系列文章都很不错，这里尝试把最新的一篇翻译了一下，这篇文章在18年12月13日发布在  a16z 博客上，阐释了为什么网络效应貌似在失效。更希望可以看一下他们的原文，并且博客中也发布了很多关于网络效应的文章,文末附有原文链接。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="网络效应的动力变化"><a href="#网络效应的动力变化" class="headerlink" title="网络效应的动力变化"></a>网络效应的动力变化</h3><p>by D’Arcy and Li Jin</p>
+<p>在互联网时代，最成功的公司和产品都是以网络效应为基础，即越多的人使用网络，则网络对用户更有价值。比如亚马逊和谷歌这样的公司，以及维基百科和一些加密货币这样的开源项目。从本质来说，网络效应背后的理论表明，具有网络效应的平台和产品伴随着它们的规模越大而变得更有优势，不仅仅是提供给用户更多的价值，而且还为改进产品而积累更多的资源，从而加强了“飞轮效应”。</p>
+<p><img src="/2019/03/13/【翻译】网络效应失效了吗？/1270994144-1552475007346.jpg" alt="1270994144"></p>
+<p>但是最近发现，现实似乎与理论背道而驰。</p>
+<p>我们没有看到赢家通吃的局面，而是看到各种具有网络效应的公司，在同一个市场保持竞争关系——无论从通讯应用，还是到运动鞋市场。例如 Instagram 的 Stories 对 Snap 的影响，最近甚至在 Snap 的目标人群中超越了它。</p>
+<p>这一切是否意味着我们所谓的网络效应已经失效？当然没有，而且要比以前更有活力。</p>
+<p>我们知道并非所有的网络效应都是等效的，而且它们也不是平等地进化。每种产品都有不同类型的网络效应，随着时间的推移，其成熟度和发展程度也各不相同。如果说有什么区别，那么大多数具有网络效应的公司的变化比以往任何时候都要快。</p>
+<p>那么，企业家和创始人该如何应对这个网络效应看似逐渐衰减的时代呢？</p>
+<p>重要的是要知道你的产品的网络效应在今天是什么样的，并且需要预测它们将如何发展。为此，你需要了解公司的三个方面，以及它们在未来如何变化：<strong>（1）你的核心价值；（2）你的用户、库存；（3）你的竞争生态系统。</strong>否则，你可能会陷入困境，声称网络效应已经失效。</p>
+<p>下面是以动态的角度来分析，关于预测未来网络效应的一些原则。然后如果你知道你的产品有网络效应，可以参阅这篇文章，了解如何衡量并保持网络效应。</p>
+<h4 id="核心价值，并非所有产品都是平等的"><a href="#核心价值，并非所有产品都是平等的" class="headerlink" title="核心价值，并非所有产品都是平等的"></a>核心价值，并非所有产品都是平等的</h4><p>公司或产品的网络效应曲线，并不是伴随着规模的增长，和收益增长的曲线（甚至是直线）同步，它可以是和收益增长曲线渐进，也可能是到达拐点甚至反向。对创始人来说，关键在于你要知道是什么核心价值来推动产品的网络效应，了解推动的强度，然后聚焦在核心价值将如何发展——尤其在新的核心价值和额外的市场契合时。</p>
+<p>下面看几个例子：</p>
+<p><strong>打车出行。</strong>基于地理位置，司机的供应和乘车需求相互加强，因此更多的司机意味着更短的等待时间，更短的等待时间则会产生更多的乘车需求，更多的乘车需求则会吸引更多的司机……这就是飞轮效应。但是这个核心价值有一个障碍：一旦你在特定的地理位置上达到低于5分钟的等待时间，乘客就对这个网络中是否有更快的响应速度而不太关心了。如果有多个平台达到了这个相对的流动性水平（例如足够的司机可以满足乘客5分钟的等待时间），那么特定平台对乘客来说就不重要了。在这个阶段，平台就需要在其他方面进行竞争，如品牌、声誉、价格、用户体验、忠诚度等，换句话说，核心价值需要进化。</p>
+<p><img src="/2019/03/13/【翻译】网络效应失效了吗？/954861347-1552475023674.jpg" alt="954861347"></p>
+<p><strong>社会贷款。</strong>有时网络效应的变化并不是由相对流动性（如等待时间）驱动，而是由绝对流动性（如网络中的人数）驱动。以  Frank 为例，人们向家人、朋友借入或借出钱（我们其中的一个是创始人之一）。早期时候，更多的朋友加入 Frank  的小团体，则意味着更多的需求和更多的流动性。但一旦这个小团体超过7个人，他们就不太可能借入或借出钱，所以只有在7人左右的小团体内，人们才会保持一定的信任感。因为随着用户连结的节点更多，超过了平台所能提供的核心价值，在这种情况下，网络效应由正向变为负向。这种情况也适用于其他一些亲密社交的产品。</p>
+<p><img src="/2019/03/13/【翻译】网络效应失效了吗？/247035710-1552475046385.jpg" alt="247035710"></p>
+<p><strong>社交网络。</strong>随着  Facebook  的内容从朋友分享动态到展示更多的新闻内容，网络效应减弱了，过多的朋友或粉丝导致人们不愿意分享私人内容，而转向新闻和公共领域内容。核心价值和网络效应也相应地从社交网络转向了社交媒体。更重要的是，在社交媒体的场景下，再增加一个网络节点的价值，要低于早期纯社交网络的价值。所以核心价值的转变意味着网络效应曲线达到了拐点。虽然一些功能（如推荐算法、时间轴）可以让用户添加朋友的同时来保持一定的社交属性，以推迟这个拐点，但最终内容展示、核心价值、网络效应都会发生变化。</p>
+<p><img src="/2019/03/13/【翻译】网络效应失效了吗？/220362137.jpg" alt="220362137"></p>
+<p><strong>去中心化平台。</strong>比如考虑比特币，如果人们认为是数字黄金，那么网络效应是更多的买家、卖家就有更多的流动性，这将增加平台对所有人的价值。但如果有人认为比特币是一个支付方式，那么只要它经历了网络拥塞或其他障碍，那么更多的用户不一定更好。这是一个值得考虑的有趣案例（不是出于投资目的），同一个平台通过不同的核心价值如何相应地增强或削弱网络效应。同样这个例子说明附加功能（比如扩展、增加的并发量和响应速度）如何转变核心价值，转变甚至创建新的网络效应曲线。</p>
+<p>分享上述例子的目的是展示网络效应的细微差别和演变。如果你不注意这些因素，你可能会认为在某个业务中，网络效应不再存在。而这可能是转换新的核心价值的问题。</p>
+<h4 id="用户和库存，并非所有的用户都是平等的"><a href="#用户和库存，并非所有的用户都是平等的" class="headerlink" title="用户和库存，并非所有的用户都是平等的"></a>用户和库存，并非所有的用户都是平等的</h4><p>你的产品或平台目前拥有的用户类型和库存，以及你要添加的类型，是理解和预测网络效应曲线的基础。</p>
+<h5 id="商品化-vs-差异化供应"><a href="#商品化-vs-差异化供应" class="headerlink" title="商品化 vs 差异化供应"></a>商品化 vs 差异化供应</h5><p>尤其在双边市场中，预测网络效应的一个重要因素是用户、库存是商品化还是差异化。</p>
+<p>在打车中，乘客对到底是哪位司机提供服务是没有关系的，所以司机就是商品化的存在（乘客同样也是）。拥有相对商品化库存的平台，一旦达到基本的流动性水平，就更有可能看到网络效应渐进线。对于像打车这样的领域，相应地扩展边界（如  Lyft 已完成医疗保健计划或 Uber 进入外卖领域），可以实现具有差异化但仍然是可以替代的库存，这可能会增加网络效应的强度。</p>
+<p>具有更多差异化库存的平台有更强健的网络效应，因为它可以满足用户不同的需求（同时在库存中保持足够的可替代性）。例如在洛杉矶，AirBnB  可以向用户展示每晚225-325美元的住宿体验，而不仅仅只是价格为150-250美元、有阳台、有浴缸的标准化服务。因此，AirBnB  无论是对于双边市场的哪一边，都比只展示标准化服务的网站更有价值。它的网络效应依然很强健，不仅是它在所有差异化库存中达到了基本的流动性水平（使其对更多用户有价值），而且伴随着更多的差异化供应而有更大的价值。</p>
+<p>但越差异化，平台越需要做好匹配。这本身也增加了平台的整体防御性，并使网络效应随着时间的推移保持强健的曲线。</p>
+<p><img src="/2019/03/13/【翻译】网络效应失效了吗？/1546585948-1552475080775.jpg" alt="1546585948"></p>
+<h5 id="增量用户类型"><a href="#增量用户类型" class="headerlink" title="增量用户类型"></a>增量用户类型</h5><p>而且需要注意的是，除了用户和库存的商品化性质之外，并不是网络中所有的节点都是平等的，有些人比其他人更有价值，或价值更低。例如一个受欢迎的餐馆，并且位于好的位置，比起一个不知名的餐馆，它为 Open Table 网站增加了更多的价值。</p>
+<p>当你需要获取和留存更多的用户，在预测网络效应时，需要注意增量用户的性质，他们是“破坏者”、“中性”还是”贡献者“？对社交网络来说，添加一个脱离其他用户的”破坏者“会降低价值，添加一个”潜伏者“是中性的，既不增加也不降低价值，添加一个”贡献者“会带来巨大的价值。</p>
+<p>所以关键在于，过滤掉你不想要的用户的同时，确保激活想要的用户。这就是为什么大多数好的平台投入成本来筛选和删除不良的用户、库存（例如维基百科的编辑、AirBnB  的评论等）。不幸的是，这些筛选机制并不总是有效，有时寻找优质的贡献者的成本非常高，因此”增长“相对于成本的计算非常重要。</p>
+<p><img src="/2019/03/13/【翻译】网络效应失效了吗？/615204658-1552475090260.jpg" alt="615204658"></p>
+<h4 id="竞争，并非所有的市场都是平等的"><a href="#竞争，并非所有的市场都是平等的" class="headerlink" title="竞争，并非所有的市场都是平等的"></a>竞争，并非所有的市场都是平等的</h4><p>市场以及你的竞争对手的性质对于理解和预测网络效应也很重要。</p>
+<h5 id="网络重叠"><a href="#网络重叠" class="headerlink" title="网络重叠"></a>网络重叠</h5><p>虽然具有网络效应的企业因为规模巨大而具有一定的防御性，但它们并不能免受竞争的影响。对于这些类型的企业来说，不仅要弄清楚你的直接竞争对手是谁，你还需要考虑网络重叠。如果其他产品拥有与你相似的网络，就会存在着它们进入你的市场的风险。因为它们已经拥有了类似的网络，它们就更容易进入你的领域（  Instagram 的 Story 入侵 Snapchat 的领域就是一个很好的例子）。更不用说那些具有更完备的网络效应的企业（如  DoorDash 和 Uber Eats ；中国的滴滴和 Uber ）</p>
+<h5 id="迁移成本"><a href="#迁移成本" class="headerlink" title="迁移成本"></a>迁移成本</h5><p>竞争对手的低迁移成本也可以降低网络效应。注册和登录门槛低有助于用户增长，但如果你的竞争对手具有同样低的门槛和迁移成本，则用户可能会成为多平台用户。比如因为低门槛和低迁移成本，所以很容易使用多个约会应用或地图产品。</p>
+<h5 id="跨平台用户的需求"><a href="#跨平台用户的需求" class="headerlink" title="跨平台用户的需求"></a>跨平台用户的需求</h5><p>当用户无法使用单一平台来实现他们的目标时，网络效应就会被削弱。就业市场就是一个很好的例子：因为招聘是公司业务很关键的模块，需求是要被能尽量满足的，公司可能在多个招聘平台上列出自己的招聘要求，而没有一个平台能满足他们所有的招聘需求。如果平台的一边是跨平台用户，那么平台运营在定价、功能和必要的流动性方面，就会有更大的压力，这会使收益情况发生很大的变化。</p>
+<p>我们将在其他文章中详细介绍这些衡量网络效应的16个指标：[<a href="https://a16z.com/2018/12/13/16-metrics-network-effects/]。" target="_blank" rel="noopener">https://a16z.com/2018/12/13/16-metrics-network-effects/]。</a></p>
+<p>快速的市场追随者可以适应更快速的打法，  Instagram 的 Story 能够挑战 Snap，招聘市场可以立刻吸引成千上万的雇主。API 化使得做任何事情都变得更容易：  Stripe 支付意味着任何一个市场都可以在一个小时内完成支付，而以前 eBay 通过建立自己的支付系统而获得一定的护城河。</p>
+<p>因此，产品迭代的增长速度，网络扩展的速度以及竞争对手的准入门槛，都极大地影响着对网络效应的预测。早期入场者可能不再拥有看似持久的赢家通吃优势，网络效应的变化也比以往任何时候都快。某些特定因素，如核心价值的转变、网络重叠、网络中的破坏者，可能会降低平台网络效应的持续力。</p>
+<p>这不是打击任何人，网络效应将继续支撑着最具影响力的的应用市场。这仅仅是提醒创始人需要了解将会发生什么变化及其原因，因此你可以做更多的事情来规划和解决这些问题，而不被其蒙蔽。网络效应并没有消失，而且比以往更具有活力和动态性。通过了解你现在的网络效应是什么样子，以及之后会怎样变化，创始人可以更好地设计网络效应和其他护城河，而不是随波逐流。</p>
+<p>网络效应依然NB！</p>
+<hr>
+<p>原文链接： <a href="https://a16z.com/2018/12/13/network-effects-dynamics-in-practice/?utm_source=wanqu.co&amp;utm_campaign=Wanqu+Daily&amp;utm_medium=rss" target="_blank" rel="noopener">The Dynamics of Network Effects</a></p>
+<p>下面是其他作者翻译的关于网络效应的其他文章，可以配合阅读一下</p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzI3NjE2NTE3Mw==&amp;mid=2655225880&amp;idx=1&amp;sn=5a08b19a118300b6191f429edd9ff7e8&amp;chksm=f0ce8f42c7b906544b47eddcbab3264a5dca0d2549be2e1041359b5e5645471eb2080d95d1c2&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">关于网络效应，你应该知道的一切（附干货大集合）</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络效应/" rel="tag"><i class="fa fa-tag"></i> 网络效应</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/13/测试一下/" rel="next" title="测试一下">
+                <i class="fa fa-chevron-left"></i> 测试一下
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="moose">
+            
+              <p class="site-author-name" itemprop="name">moose</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络效应的动力变化"><span class="nav-number">1.</span> <span class="nav-text">网络效应的动力变化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心价值，并非所有产品都是平等的"><span class="nav-number">1.1.</span> <span class="nav-text">核心价值，并非所有产品都是平等的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户和库存，并非所有的用户都是平等的"><span class="nav-number">1.2.</span> <span class="nav-text">用户和库存，并非所有的用户都是平等的</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#商品化-vs-差异化供应"><span class="nav-number">1.2.1.</span> <span class="nav-text">商品化 vs 差异化供应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#增量用户类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">增量用户类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#竞争，并非所有的市场都是平等的"><span class="nav-number">1.3.</span> <span class="nav-text">竞争，并非所有的市场都是平等的</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#网络重叠"><span class="nav-number">1.3.1.</span> <span class="nav-text">网络重叠</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迁移成本"><span class="nav-number">1.3.2.</span> <span class="nav-text">迁移成本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#跨平台用户的需求"><span class="nav-number">1.3.3.</span> <span class="nav-text">跨平台用户的需求</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moose</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
