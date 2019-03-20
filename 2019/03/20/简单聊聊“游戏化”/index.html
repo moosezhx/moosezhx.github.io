@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这篇只是宽泛地聊聊我所认为的“游戏化”是什么，并不能作为一种做事的方法或手段，其中的一些内容来源于《游戏化思维》等书籍，当然我并不是简单地复述总结这本书">
+<meta name="keywords" content="游戏化,游戏设计,游戏机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单聊聊“游戏化”">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/简单聊聊“游戏化”/index.html">
+<meta property="og:site_name" content="此刻 | Moment">
+<meta property="og:description" content="这篇只是宽泛地聊聊我所认为的“游戏化”是什么，并不能作为一种做事的方法或手段，其中的一些内容来源于《游戏化思维》等书籍，当然我并不是简单地复述总结这本书">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-20T09:01:45.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单聊聊“游戏化”">
+<meta name="twitter:description" content="这篇只是宽泛地聊聊我所认为的“游戏化”是什么，并不能作为一种做事的方法或手段，其中的一些内容来源于《游戏化思维》等书籍，当然我并不是简单地复述总结这本书">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="此刻 | Moment" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/20/简单聊聊“游戏化”/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>简单聊聊“游戏化” | 此刻 | Moment</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">此刻 | Moment</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-books">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/books/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书籍</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-movies">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/movies/" rel="section"><i class="menu-item-icon fa fa-fw fa-film"></i> <br>电影</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-principles">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/principles/" rel="section"><i class="menu-item-icon fa fa-fw fa-key"></i> <br>通则</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/简单聊聊“游戏化”/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="moose">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="此刻 | Moment">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">简单聊聊“游戏化”
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-20 16:59:21 / 修改时间：17:01:45" itemprop="dateCreated datePublished" datetime="2019-03-20T16:59:21+08:00">2019-03-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/方法/" itemprop="url" rel="index"><span itemprop="name">方法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.2k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇只是宽泛地聊聊我所认为的“游戏化”是什么，并不能作为一种做事的方法或手段，其中的一些内容来源于《游戏化思维》等书籍，当然我并不是简单地复述总结这本书</p>
+<a id="more"></a>
+<h4 id="“游戏化”不是什么"><a href="#“游戏化”不是什么" class="headerlink" title="“游戏化”不是什么"></a>“游戏化”不是什么</h4><p>如果我们从正面定义游戏化，可能会有些以偏概全，那我们就尝试用“否定法”来定义。</p>
+<p><strong>“游戏化”不是游戏。</strong>游戏是一个需要让人持续投入并隔离现实世界的空间，任何非游戏的元素都会打断这种体验，或者说非游戏的元素也是完全服务于玩家的游戏目标，缺少游戏元素，游戏是不成立的。而游戏化并非建立一个完备的游戏，而是利用基本的游戏元素，因此会更加灵活，整套体系就算剥离游戏元素也可以成立，玩家并非在升级打怪，而是在用产品提供的服务。</p>
+<p><strong>“游戏化”不是单纯的激励体系。</strong>并不是在流程中加入例如PBL元素就可以称之为游戏化，游戏化要有价值目标，激励体系只是手段，合理的游戏设计是服务于整个价值目的的，单纯的激励机制会陷入一种盲目追求刺激的过程，一是刺激的边际效应大大降低，二是会损坏整体目标。</p>
+<p><strong>不经过经营不能称之为“游戏化”。</strong>只是合理地运用了游戏设计元素的过程，并不是“游戏化”的终点，一个成功的“游戏化”过程要了解经营策略，游戏设计要充分考虑到经营，无论是玩家的持续性或扩散性行为。</p>
+<p><strong>”游戏化“不是营销。</strong>如果游戏化只是为了给现有的营销或传统的奖励机制套了一层壳，那么根本没有产生附加价值，甚至让游戏变得更糟。</p>
+<p>由此，几个游戏化概念的重要元素是：<strong>游戏元素、游戏设计、非游戏情境、游戏运营。</strong>非游戏情境是前提，利用游戏元素，通过游戏设计使其体验大于总和，并在游戏设计时充分考虑到游戏经验策略。</p>
+<h4 id="“游戏化”能够产生作用的机制"><a href="#“游戏化”能够产生作用的机制" class="headerlink" title="“游戏化”能够产生作用的机制"></a>“游戏化”能够产生作用的机制</h4><p>好的游戏化最主要的特征是自愿参与、可选择性、有效反馈、核心循环和价值统一。然后再看看这些能产生这些特征的机制</p>
+<h5 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h5><p>能促使玩家自愿参与的要素是<strong>动机</strong>，通过激发人们的兴趣从而引起某种行为，让玩家从被激励的行为中获得价值。动机分为内在动机和外在动机，内在动机在于自我需求的实现，外在动机相当于一套奖励系统。我们更希望的是玩家由内在动机驱动，玩家通过自我需求的实现，从而有更持续的参与度。</p>
+<p>外在奖励适用于本质上不那么有趣的活动，过分地依赖外在动机，即奖励系统，会显著地降低玩家的内在动机。如果过分奖励，人们会将游戏过程中的内在动机乐趣转移到外在奖励上，虽然一定程度上可以提高短期效果，但高原停滞期会随之而来，而且游戏的乐趣是为了获得所谓的奖励，人们开始觉得奖励是理所应当，就会看做是沉没利益，边际效应就会显著降低。</p>
+<p>同一个活动对于不同的人的动机是不同的，有的人学习是为了高分，有的人是为了获取更多的知识。</p>
+<p>所以需要将外在动机整合转移到内在动机上，在于意义的转化，通过适当的游戏机制和组件，将无意义的东西转化成有意义的，比如支付宝种树将无意义的支付行为转化成有意义的环保行为；或者明确意义，比如跑步徽章可视化明确锻炼的意义；或者将消极意义转化成积极意义，比如将漫长的排队等待时间转化成更多的折扣等。</p>
+<h5 id="可选择性：目标与规则"><a href="#可选择性：目标与规则" class="headerlink" title="可选择性：目标与规则"></a>可选择性：目标与规则</h5><p>这里的可选择性不仅是指玩家可以选择不同的玩法和途径来到达玩家所认为的目标，更是玩家需要面临游戏规则所框定的选择。这些选择会产生一定的结果，这些结果又将被反馈给你。这里说的不是反馈，而是这些选择产生了游戏过程和自主性之间的联系，玩家感觉被赋予了一定的掌控力和安全感。</p>
+<p>可选择性是玩家被吸引和持续投入的基石，《社会心理学》中说，人们会对自己的行为进行合理化归因。因此人们做出选择后，往往会进行下一步动作，此时再加上有效的反馈，将玩家的整个行为持续运转。</p>
+<h5 id="有效反馈"><a href="#有效反馈" class="headerlink" title="有效反馈"></a>有效反馈</h5><p>反馈是对玩家当前操作的反应，是玩家明确可预期的结果，无论是必要性的，或者是刺激玩家兴奋的反馈，都需要及时而有效地呈现出来。</p>
+<p>但反馈不是过分强调某些特定的组件或奖励层面，奖励只是反馈的一种形式。反馈的意义在于，为用户的下一步行为创造动机。</p>
+<p>有效反馈是和学习兴趣曲线息息相关的，或者说有效反馈促进组成了学习兴趣曲线，使玩家继续投入到下一段提升过程中。最常见的例子就是等级徽章机制。</p>
+<h5 id="结构：核心循环"><a href="#结构：核心循环" class="headerlink" title="结构：核心循环"></a>结构：核心循环</h5><p>游戏化需要将玩家预期行为程序模式化，从另外一个角度说，游戏是否是有核心循环。不仅仅是易于技术框定，更是玩家明确可预期的行为。</p>
+<p>重复是游戏的基本特征，持续性投入的途径之一就是重复。核心循环包含玩家的行为，行为的结果，玩家对该结果的反应，以及重复该行为获得进度。比如《超级玛丽》的跳跃，跳跃、获取金币、下一次跳跃，其他动作都是辅助完成目标；吃鸡游戏中的“击杀快感”，包括移动、隐藏、开枪、杀人或离开，直至下一次；抖音的上划、探探左右划等。</p>
+<p>玩家正是通过这种重复性的核心循环，再加上可提升的学习曲线，来获得持续性的投入。</p>
+<h5 id="价值统一"><a href="#价值统一" class="headerlink" title="价值统一"></a>价值统一</h5><p>游戏元素或机制是为了统一的目标而存在的，不要为了游戏而游戏，避免与现有的激励机制之间的矛盾。</p>
+<p>比如在员工的绩效上使用排行榜这样的游戏机制其实会降低员工的工作效率，因为只有前几名才会获得自我实现，后面的员工会因为落差而无心追赶。</p>
+<p>比如在一个提升效率的工具平台上推出小游戏来促进日活，必然导致核心用户的流失。</p>
+<h4 id="“游戏化”不是万能的"><a href="#“游戏化”不是万能的" class="headerlink" title="“游戏化”不是万能的"></a>“游戏化”不是万能的</h4><p>诚然，通过对原有流程的游戏化设计可以有效地吸引玩家和激励玩家，但并非所有的流程都适合进行游戏化设计。</p>
+<p>由上文也可以看出，游戏化是否起作用在很大程度上依赖情境（或被创造出来的情境）本身，所以针对一个流程是否有进行游戏化设计的必要，需要看这几个方面：</p>
+<p>游戏化是让玩家持续投入的方式，如果核心问题不是由于参与度造成的，那么不太适合由游戏化解决，比如当商品的价格核心影响顾客时，游戏化也并不能让顾客购买更多。</p>
+<p>流程中是否有核心循环，玩家的行为是否可以很好地度量。</p>
+<p>结构中的目标活动都是有趣的吗？给玩家更多的且有意义的选择权和自主性。</p>
+<p>是否与核心价值冲突，比如苹果公司如果设置游戏化，反而会让用户的热情从产品上移开。</p>
+<h4 id="“游戏化”的组成机制"><a href="#“游戏化”的组成机制" class="headerlink" title="“游戏化”的组成机制"></a>“游戏化”的组成机制</h4><p>游戏有各种各样的类型，比如RPG、FPS等，游戏化当然也有多种类型，但其中有着通用的组成机制，比如PBL体系可以说几乎所有的游戏里都存在，是非常有效的游戏元素，但并不是全部。游戏化的结构就是通过一些基本的<strong>组件</strong>，配合<strong>机制</strong>来推动游戏进行，从而产生凝结在游戏中的玩家<strong>动力</strong>。</p>
+<p>组件是游戏化的具体设计形式，包括但不限于以下几种：</p>
+<ul>
+<li>成就：规定目标</li>
+<li>定制化内容：比如头像、昵称等</li>
+<li>徽章：可视化的成就标示</li>
+<li>等级：游戏进程</li>
+<li>点数：游戏进展的数值表示</li>
+<li>排行榜：视觉化显示玩家的进展和成就</li>
+<li>Boss战：尤其在一定等级的生存挑战中</li>
+<li>收集：成套东西的积累</li>
+<li>战斗：短期战役</li>
+<li>内容解锁：只有当玩家达到目标才能显示</li>
+<li>赠予：与他人共享资源</li>
+<li>任务：预设挑战，与目标和奖励相关</li>
+<li>社交图谱：玩家在游戏中的社交网络</li>
+<li>团队：同个目标的玩家组</li>
+<li>虚拟商品：游戏潜在的价值或金钱等价物</li>
+<li>引导：对玩家预期行为的指示</li>
+<li>随机奖励：意料之外的惊喜和乐趣</li>
+<li>彩蛋：给随便看看的玩家奖励和惊喜</li>
+</ul>
+<p>机制是推动游戏进程和用户参与的基本流程，考虑到在游戏化过程中，包括但不限于以下几种：</p>
+<ul>
+<li>物理：指游戏化中的物理特性（可以与现实不同），比如跳跃、驾驶车辆、建设果园、种树等，物体的位置、大小、移动方向及物体之间的关系构成了游戏化中的物理机制，比如头条的下拉刷新过程。</li>
+<li>内部经济：玩家通过合作、竞争等途径对游戏元素的收集、消费和交易，构成了内部经济，内部经济不仅仅包括金钱、能源等，还包括抽象概念例如声望、健康、时间等可被度量的元素。</li>
+<li>渐进机制：指玩家在流程中的行为路径，会有突进型和渐进型两种，突进型是指玩家会面临多种的选择路径，比如象棋第一颗子走哪都行；渐进性是指玩家只能按照既定的途径操作，比如绝大多数的叙事游戏。</li>
+<li>策略机动：玩家通过对可选择的途径通过技巧来获得优势。</li>
+<li>社交互动：玩家之间的交互机制。</li>
+</ul>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>以上并非只是大而空的概念，起码指明了一些方向，或者说是再进阶的基石，多去玩游戏，多去体验，多去思考，避免生拉硬靠，毕竟游戏化是一个很灵活的事情。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/游戏化/" rel="tag"><i class="fa fa-tag"></i> 游戏化</a>
+          
+            <a href="/tags/游戏设计/" rel="tag"><i class="fa fa-tag"></i> 游戏设计</a>
+          
+            <a href="/tags/游戏机制/" rel="tag"><i class="fa fa-tag"></i> 游戏机制</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/16/不确定性与反脆弱/" rel="next" title="不确定性与反脆弱">
+                <i class="fa fa-chevron-left"></i> 不确定性与反脆弱
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="moose">
+            
+              <p class="site-author-name" itemprop="name">moose</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#“游戏化”不是什么"><span class="nav-number">1.</span> <span class="nav-text">“游戏化”不是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“游戏化”能够产生作用的机制"><span class="nav-number">2.</span> <span class="nav-text">“游戏化”能够产生作用的机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动机"><span class="nav-number">2.1.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可选择性：目标与规则"><span class="nav-number">2.2.</span> <span class="nav-text">可选择性：目标与规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有效反馈"><span class="nav-number">2.3.</span> <span class="nav-text">有效反馈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结构：核心循环"><span class="nav-number">2.4.</span> <span class="nav-text">结构：核心循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#价值统一"><span class="nav-number">2.5.</span> <span class="nav-text">价值统一</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“游戏化”不是万能的"><span class="nav-number">3.</span> <span class="nav-text">“游戏化”不是万能的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“游戏化”的组成机制"><span class="nav-number">4.</span> <span class="nav-text">“游戏化”的组成机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">moose</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
