@@ -2002,7 +2002,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e459aa;
+  background: #95ff5d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2667,7 +2667,7 @@ ul.breadcrumb li+li:last-child {
   padding: 0;
   width: 240px;
   background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12);
   border-radius: initial;
 }
 @media (min-width: 1200px) {
@@ -2714,7 +2714,7 @@ ul.breadcrumb li+li:last-child {
   width: calc(100% - 252px);
   background: #fff;
   min-height: 700px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12);
   border-radius: initial;
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2962,7 +2962,7 @@ ul.breadcrumb li+li:last-child {
   width: 240px;
   color: #555;
   background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12), 0 -1px 0.5px 0 rgba(255,255,255,0.09);
   border-radius: initial;
   opacity: 0;
 }
@@ -3109,12 +3109,12 @@ ul.breadcrumb li+li:last-child {
 .post-block {
   padding: 40px;
   background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12);
   border-radius: initial;
 }
 #posts > article + article .post-block {
   margin-top: 12px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12), 0 -1px 0.5px 0 rgba(255,255,255,0.09);
   border-radius: initial;
 }
 .comments {
@@ -3122,7 +3122,7 @@ ul.breadcrumb li+li:last-child {
   margin: auto;
   margin-top: 12px;
   background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12), 0 -1px 0.5px 0 rgba(255,255,255,0.09);
   border-radius: initial;
 }
 .posts-expand {
@@ -3142,7 +3142,7 @@ ul.breadcrumb li+li:last-child {
   margin: 12px 0 0;
   border-top: initial;
   background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12), 0 -1px 0.5px 0 rgba(255,255,255,0.09);
   border-radius: initial;
   padding: 10px 0 10px;
 }
@@ -3160,10 +3160,10 @@ ul.breadcrumb li+li:last-child {
 }
 .sub-menu {
   border-bottom: initial !important;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12);
 }
 .sub-menu+ #content > #posts .post-block {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+  box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12), 0 -1px 0.5px 0 rgba(255,255,255,0.09);
   margin-top: 12px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -3237,7 +3237,7 @@ ul.breadcrumb li+li:last-child {
   }
   .post-block {
     padding: 20px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+    box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12), 0 -1px 0.5px 0 rgba(255,255,255,0.09);
     border-radius: initial;
   }
   #posts > article + article .post-block {
@@ -3267,7 +3267,7 @@ ul.breadcrumb li+li:last-child {
   .post-block {
     padding: 12px;
     min-height: auto;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
+    box-shadow: 0 2px 2px 0 rgba(255,255,255,0.12), 0 3px 1px -2px rgba(255,255,255,0.06), 0 1px 5px 0 rgba(255,255,255,0.12), 0 -1px 0.5px 0 rgba(255,255,255,0.09);
     border-radius: initial;
   }
   #posts > article + article .post-block {
@@ -3280,4 +3280,27 @@ ul.breadcrumb li+li:last-child {
   .pagination {
     margin: 8px 0 0;
   }
+}
+post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 14px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 14px rgba(202,203,204,0.5);
+}
+.post-block {
+  opacity: 1;
+  display: block;
+  padding-top: 30px;
+}
+.posts-expand .post-meta {
+  margin: 3px 0 60px 0;
+  margin-top: 3px;
+  margin-right: 0px;
+  margin-bottom: 30px;
+  margin-left: 0px;
+  color: #999;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 12px;
+  text-align: center;
 }
