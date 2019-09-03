@@ -2005,7 +2005,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #71ffff;
+  background: #e3bbe5;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3283,6 +3283,10 @@ ul.breadcrumb li+li:last-child {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.posts-expand .post-meta {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 post {
   margin-top: 60px;
